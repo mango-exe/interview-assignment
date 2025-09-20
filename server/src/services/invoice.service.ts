@@ -9,7 +9,7 @@ export class InvoiceService {
   constructor(
     private userRepository: UserRepository,
     private invoiceRepository: InvoiceRepository,
-  ) {}
+  ) { }
 
   async createInvoice(invoice: NewInvoiceDTO): Promise<InvoiceDTO> {
     const user = await this.userRepository.findById(invoice.user_id);
@@ -27,7 +27,7 @@ export class InvoiceService {
     skip: number,
     limit: number,
     page: number,
-  ): Promise<InvoiceDTO[]> {
+  ): Promise<{ invoices: InvoiceDTO[]; count: number }> {
     const user = await this.userRepository.findById(userId);
     if (!user) {
       throw new Error('User not found');
@@ -40,7 +40,12 @@ export class InvoiceService {
       limit,
     );
 
-    return invoices;
+    const count = await this.invoiceRepository.getUserInvoicesCount(userId);
+
+    return {
+      invoices,
+      count,
+    };
   }
 
   async getInvoice(invoiceId: number, userId: number): Promise<InvoiceDTO> {

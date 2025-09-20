@@ -12,7 +12,12 @@ export class InvoiceRepository {
 
   findById(id: number): Promise<InvoiceDTO | null> {
     const result = this.prisma.invoice.findUnique({ where: { id } });
-    return result || null
+    return result || null;
+  }
+
+  async getUserInvoicesCount(userId: number): Promise<number> {
+    const count = await this.prisma.invoice.count({ where: { user_id: userId } });
+    return count;
   }
 
   findUserInvoices(id: number, offset: number, limit: number): Promise<InvoiceDTO[]> {

@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-function App() {
-  const [count, setCount] = useState(0)
+import AuthLayout from './components/AuthLayout';
+import MainLayout from './components/MainLayout';
 
+import Protected from './components/Protected';
+
+import Login from './components/AuthLayout/Login';
+import Register from './components/AuthLayout/Register';
+
+import Invoices from './components/MainLayout/Invoices';
+import Home from './components/MainLayout/Home';
+import Bills from './components/MainLayout/Bills';
+import Expenses from './components/MainLayout/Expenses';
+import Reports from './components/MainLayout/Reports';
+
+import ErrorDisplay from './components/ErrorDisplay';
+
+export default function App() {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ErrorDisplay />
+      <Router>
+        <Routes>
+          <Route element={<AuthLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
+
+          <Route
+            element={
+              <Protected>
+                <MainLayout />
+              </Protected>
+            }
+          >
+            <Route path="/invoices" element={<Invoices />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/bills" element={<Bills />} />
+            <Route path="/expenses" element={<Expenses />} />
+            <Route path="/reports" element={<Reports />} />
+          </Route>
+        </Routes>
+      </Router>
     </>
   )
 }
-
-export default App

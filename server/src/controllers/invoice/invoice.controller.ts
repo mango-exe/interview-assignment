@@ -31,7 +31,7 @@ export class InvoiceController {
   ): Promise<ResponseDTO> {
     const { skip, limit, page } = req.pagination;
 
-    const invoices = await this.invoiceService.getUserInvoices(
+    const { invoices, count } = await this.invoiceService.getUserInvoices(
       user.userId,
       skip,
       limit,
@@ -40,13 +40,17 @@ export class InvoiceController {
 
     const response: ResponseDTO = {
       message: '',
-      data: invoices,
+      data: {
+        invoices,
+        count,
+      },
       timestamp: new Date().toISOString(),
     };
     return response;
   }
 
   @Get('/invoices/:id')
+  @UseGuards(JwtAuthGuard)
   async getInvoice(
     @Param('id') id: string,
     @User() user: JWTDto,
@@ -59,7 +63,9 @@ export class InvoiceController {
 
     const response: ResponseDTO = {
       message: '',
-      data: invoice,
+      data: {
+        invoice,
+      },
       timestamp: new Date().toISOString(),
     };
     return response;

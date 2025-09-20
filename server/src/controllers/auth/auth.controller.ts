@@ -24,22 +24,22 @@ export class AuthController {
   @Post('/login')
   @HttpCode(HttpStatus.OK)
   login(@Request() req: { user: UserResponseDTO }): ResponseDTO {
-    const access_token = this.authService.login(req.user);
+    const { access_token, user } = this.authService.login(req.user);
     const response: ResponseDTO = {
       timestamp: new Date().toISOString(),
-      data: access_token,
+      data: { accessToken: access_token, user },
       message: '',
     };
     return response;
   }
 
-  @Post('/auth/register')
+  @Post('/register')
   @HttpCode(HttpStatus.CREATED)
   async register(@Body() userData: CreateUserDTO): Promise<ResponseDTO> {
-    const createdUser = await this.userService.createUser(userData);
+    await this.userService.createUser(userData);
     const response: ResponseDTO = {
-      data: createdUser,
-      message: '',
+      data: null,
+      message: 'User registered successfully',
       timestamp: new Date().toISOString(),
     };
     return response;
