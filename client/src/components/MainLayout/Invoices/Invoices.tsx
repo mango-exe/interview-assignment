@@ -17,7 +17,6 @@ const invoiceColumns: ColumnDef<Invoice, any>[] = [
   {
     accessorKey: "vendor_name",
     header: "Payee",
-    cell: () => <Checkbox checked={false} />,
   },
   {
     accessorKey: "description",
