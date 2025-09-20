@@ -8,7 +8,7 @@ This guide will walk you through the steps to set up and run both the backend an
 
 To get the application up and running, follow these steps in order:
 
-**Clone the repository**: Start by cloning the project to your local machine: `https://github.com/mango-exe/interview-assignment.git`.
+**Clone the repository**: Start by cloning the project to your local machine: `git clone https://github.com/mango-exe/interview-assignment.git`.
 
 **Node 22 is required to run the assignment**
 
