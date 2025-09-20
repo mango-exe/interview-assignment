@@ -10,6 +10,8 @@ To get the application up and running, follow these steps in order:
 
 **Clone the repository**: Start by cloning the project to your local machine: `https://github.com/mango-exe/interview-assignment.git`.
 
+**Node 22 is required to run the assignment**
+
 ### Backend
 
 1.  **Go to backend directory**: From the cloned repository directory, run `cd server`.
@@ -26,9 +28,9 @@ To get the application up and running, follow these steps in order:
           my-postgres:16
         ```
 4.  **Set up the database schema**:
-    * Generate Prisma client: `npm prisma:generate`
-    * Apply migrations: `npm prisma:migrate`
-    * Seed the database with initial data: `npm prisma:seed`
+    * Generate Prisma client: `npm run prisma:generate`
+    * Apply migrations: `npm run prisma:migrate`
+    * Seed the database with initial data: `npm run prisma:seed`
 5.  **Start the application**: Run `npm start` to launch the backend. The server will run on port 3000.
 
 ### Frontend
@@ -50,6 +52,8 @@ To run the test suite for both the backend and frontend, follow these instructio
 ### Frontend Tests
 
 * Navigate to the client directory: `cd client`.
+
+* Run `npx playwright install` to install the Playwright cli.
 * Run `npx playwright test` to run the frontend tests.
 
 ---
