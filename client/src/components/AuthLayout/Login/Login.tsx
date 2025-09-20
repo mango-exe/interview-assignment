@@ -70,6 +70,7 @@ const Login = () => {
         {errors.password && <span className="text-red-500 text-sm mt-1">{errors.password.message}</span>}
       </div>
       <button
+        id="login-button"
         onClick={handleSubmit(onSubmit)}
         className="w-full h-[2.2em] rounded-2xl bg-[var(--light-purple)] text-white text-sm hover:bg-[var(--darker-purple)] transition"
       >

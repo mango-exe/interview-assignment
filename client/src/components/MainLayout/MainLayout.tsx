@@ -27,7 +27,7 @@ export default function MainLayout() {
               </div>
               <div className="grid grid-cols-[20%_80%] items-center">
                 <ChevronRight className="justify-self-start" />
-                <Link className={`justify-self-start ${location.pathname === '/invoices' ? 'font-bold' : ''}`} to="/invoices">Invoices</Link>
+                <Link id='invoices-link' className={`justify-self-start ${location.pathname === '/invoices' ? 'font-bold' : ''}`} to="/invoices">Invoices</Link>
               </div>
               <div className="grid grid-cols-[20%_80%] items-center">
                 <ChevronRight className="justify-self-start" />

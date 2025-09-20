@@ -82,7 +82,7 @@ const InvoiceDatatable = ({
             ))}
           </TableHeader>
 
-          <TableBody>
+          <TableBody id="invoices-list">
             {isLoading ? (
               <TableRow>
                 <TableCell colSpan={columns.length} className="text-center text-gray-500">
