@@ -8,13 +8,13 @@ This guide will walk you through the steps to set up and run both the backend an
 
 To get the application up and running, follow these steps in order:
 
-1.  **Clone the repository**: Start by cloning the project to your local machine: `https://github.com/mango-exe/interview-assignment.git`.
+**Clone the repository**: Start by cloning the project to your local machine: `https://github.com/mango-exe/interview-assignment.git`.
 
 ### Backend
 
-2.  **Go to backend directory**: From the cloned repository directory, run `cd server`.
-3.  **Install dependencies**: Run `npm install` to install all the necessary backend project dependencies.
-4.  **Prepare the database**:
+1.  **Go to backend directory**: From the cloned repository directory, run `cd server`.
+2.  **Install dependencies**: Run `npm install` to install all the necessary backend project dependencies.
+3.  **Prepare the database**:
     * Create a local directory for your PostgreSQL data: `mkdir pgdata`
     * Build the Docker image: `docker build -t my-postgres:16 .`
     * Run the Docker container:
@@ -25,11 +25,11 @@ To get the application up and running, follow these steps in order:
           -v pgdata:/var/lib/postgresql/data \
           my-postgres:16
         ```
-5.  **Set up the database schema**:
+4.  **Set up the database schema**:
     * Generate Prisma client: `npm prisma:generate`
     * Apply migrations: `npm prisma:migrate`
     * Seed the database with initial data: `npm prisma:seed`
-6.  **Start the application**: Run `npm start` to launch the backend. The server will run on port 3000.
+5.  **Start the application**: Run `npm start` to launch the backend. The server will run on port 3000.
 
 ### Frontend
 
